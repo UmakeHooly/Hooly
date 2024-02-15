@@ -1,0 +1,21 @@
+allumer le backend:
+cd Hooly_back
+php -S localhost:8000 -t public/
+
+allumer le frontend:
+cd Hooly_front
+ng serve
+
+Modifier le .env du backend si besoin:
+DATABASE_URL='mysql://root@localhost/hooly'
+
+Base de donnée:
+allumer le serveur de base de données (j'utilise Xampp)
+
+cd Hooly_back
+php bin/console d:d:c
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
+
+l'accès au frontend ce fait par défaut via ce lien http://localhost:4200/
+l'accès au backend ce fait par défaut via ce lien http://localhost:8000/

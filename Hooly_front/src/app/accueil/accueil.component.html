@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" class="form-group" id="form">
+    <div>
+      <label for="foodtruck" class="form-label">Sélectionnez votre foodtruck</label>
+      <select class="form-select" [(ngModel)]="selectedFoodtruck" name="foodtruck">
+        <option *ngFor="let foodtruck of foodtrucks" [value]="foodtruck.id">{{ foodtruck.nom }}</option>
+      </select>
+    </div>
+    <div>
+      <label for="date" class="form-label">Jour de réservation</label>
+      <input class="form-control" name="date" type="date" [(ngModel)]="reservationDate" (ngModelChange)="checkDate($event)" required>
+      <div *ngIf="!isDateValid" class="form-text text-danger">{{dateText}}</div>
+    </div>
+    <button type="submit" class="btn btn-primary" id='submit' [disabled]="!isDateValid">Réserver</button>
+    <h2 class="mt-3">{{response}}</h2>
+  </form>
+  
